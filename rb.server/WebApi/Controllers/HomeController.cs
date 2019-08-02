@@ -4,7 +4,7 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TestController : Controller
+    public class HomeController : Controller
     {
         [HttpGet]
         public ActionResult<string> Get()
