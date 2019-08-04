@@ -8,9 +8,9 @@ using Microsoft.OpenApi.Models;
 
 namespace WebApi
 {
-    public Startup
+    public class Startup
     {
-        public class Startup(IConfiguration configuration)
+        public  Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
