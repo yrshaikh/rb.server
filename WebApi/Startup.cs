@@ -10,7 +10,7 @@ namespace WebApi
 {
     public Startup
     {
-        public Startup(IConfiguration configuration)
+        public class Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
