@@ -1,4 +1,3 @@
-
-rb.server/.idea/*
-rb.server/WebApi/bin/*
-rb.server/WebApi/obj/*
+WebApi/bin/*
+WebApi/obj/*
+.idea/*
