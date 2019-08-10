@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using WebApi.Entities.WebApi.Entities;
 
 namespace WebApi
 {
@@ -34,8 +36,13 @@ namespace WebApi
                     });
             });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            
+            
+            var mySqlConnectionString = Configuration.GetConnectionString("DefaultConnection");
+            
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseMySql(mySqlConnectionString));
 
-            // 1. Add Authentication Services
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -79,7 +86,6 @@ namespace WebApi
             });
 
             app.UseHttpsRedirection();
-            // 2. Enable authentication middleware
             app.UseAuthentication();
             app.UseMvc();
         }
